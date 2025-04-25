@@ -1,4 +1,12 @@
-static public int in(String prompt) {
+package Games;
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class inputHandler{
+
+public int in(String prompt) {
     System.out.print(prompt); // Display the prompt message
     String temp = in(); // Get the input from the user
     boolean cont = true; // Flag to control the loop until valid input is received
@@ -18,7 +26,7 @@ static public int in(String prompt) {
     return d.intValue(); // Return the valid double value
 }
 
-static public final String in() {
+public final String in() {
     Scanner scan = new Scanner(System.in);
     boolean cont = true; // Flag to control the loop until valid input is received
     String temp = ""; // Temporary variable to hold user input
@@ -33,4 +41,6 @@ static public final String in() {
 
     }
     return temp;
+}
+
 }

@@ -149,10 +149,38 @@ public class mathGame {
                 this.split();
                 break;
             case 6:
+                /*
+                 * CWE-1335: Incorrect Bitwise Shift of Integer
+                 * This handles the bitwise shift by using the >> and << operator, instead of
+                 * the unsigned >>> or <<< operator.
+                 */
 
+                int temp = i.in("\nInteger Bitshift:\n1. Left shift\n2. Right shift\nChoice: ");
+                if (temp == 1)
+                    this.randomNumStart = this.randomNumStart << 2;
+                else
+                    this.randomNumStart = this.randomNumStart >> 2;
+                moves++;
                 break;
             case 7:
+                String hex = Integer.toHexString(this.randomNumStart);
+                System.out.println("\nCurrent Value as Hexidecimal:" + hex);
+                int temp1 = i.in("1. Shift to the Left\n2. Shift to the Right\n3. Back\nChoice: ");
+                /*
+                 * CWE-1389: Incorrect Parsing of Numbers with Different Radices
+                 * The Integer.parseInt uses 16 as the radix since it will be using hexidecimal
+                 * values.
+                 */
 
+                if (temp1 == 1) {
+                    this.randomNumStart = Integer.parseInt(hex + "0", 16);
+                } else if (temp1 == 2) {
+                    this.randomNumStart = Integer.parseInt(hex.substring(0, hex.length() - 1), 16);
+                } else
+                    moves--;
+                System.out.println("Current Value as Hexidecimal:" + Integer.toHexString(this.randomNumStart) + "\n");
+
+                moves++;
                 break;
             default:
                 break;
