@@ -37,7 +37,7 @@ public class main {
                     break;
             }
             choice = i.in(
-                    "Which game would you like to play next:\n1. Math Game\n2. Hangman\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
+                    "Which game would you like to play next:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Cube Animation\n5. Choice 5\n 6. Exit\nChoice:");
         }
     }
 }
