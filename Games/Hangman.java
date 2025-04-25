@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Hangman {
     public static final int MAX_WRONG = 6;
-    public static final int EXPECTED_WORD_COUNT = 203;
+    public static final int EXPECTED_WORD_COUNT = 197;
     private static String[] words = {"closed", "water", "bottle", "hitch", "dish", "frisk", "trim", "lying", "step", "zap", "husk",
                                      "bid", "tree", "spots", "tough", "sole", "surf", "razz", "blind", "soil", "gavel", "liver",
                                      "flush", "house", "pod", "brat", "steak", "buggy", "white", "rotor", "paper", "cubby", "fume",
