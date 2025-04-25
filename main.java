@@ -1,12 +1,14 @@
 import Games.mathGame;
+import Games.GuessNumber;
 import Games.inputHandler;
+import Games.Hangman;
 
 public class main {
     public static void main(String[] args) {
         inputHandler i = new inputHandler();
         System.out.println("Welcome to a Game Collection!");
         int choice = i.in(
-                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
+                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
         while (choice != 6) {
             switch (choice) {
                 case 1:
@@ -18,7 +20,7 @@ public class main {
                     hangman.play();
                     break;
                 case 3:
-
+                    GuessNumber guessNumber = new GuessNumber();
                     break;
                 case 4:
 
