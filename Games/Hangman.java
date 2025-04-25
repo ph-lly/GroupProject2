@@ -8,8 +8,23 @@ import java.util.*;
 
 public class Hangman {
     public static final int MAX_WRONG = 6;
-    public static final int EXPECTED_WORD_COUNT = 3;
-    private static String[] words = {"closed", "water", "bottle"};
+    public static final int EXPECTED_WORD_COUNT = 203;
+    private static String[] words = {"closed", "water", "bottle", "hitch", "dish", "frisk", "trim", "lying", "step", "zap", "husk",
+                                     "bid", "tree", "spots", "tough", "sole", "surf", "razz", "blind", "soil", "gavel", "liver",
+                                     "flush", "house", "pod", "brat", "steak", "buggy", "white", "rotor", "paper", "cubby", "fume",
+                                     "hippo", "wimp", "roast", "saver", "clove", "idiot", "bear", "chew", "teach", "mover", "fret",
+                                     "dry", "tad", "mam", "voice", "spur", "modal", "cross", "bowel", "hose", "cop", "sling", "tub",
+                                     "ghost", "tote", "links", "net", "ride", "join", "laugh", "oat", "stump", "mambo", "coney", "wharf",
+                                     "scope", "note", "hue", "climb", "rum", "font", "retro", "labor", "duck", "crumb", "creek", "tan", 
+                                     "run", "slaw", "egg", "cloud", "tag", "pen", "blush", "heel", "crust", "type", "paw", "scold", "daily", 
+                                     "zip", "kick", "twins", "cart", "woe", "trump", "bill", "lobby", "dodge", "spy", "akron", "woof", "real", 
+                                     "flask", "urn", "rule", "iron", "plus", "flick", "tuner", "cuff", "teal", "sheet", "papa", "beard", "crash",
+                                     "old", "hiss", "frizz", "pant", "virus", "hold", "wind", "boxer", "caper", "antic", "play", "last", "bulge",
+                                     "revel", "mince", "frat", "frill", "chest", "lodge", "trait", "reign", "jamb", "mylar", "blow", "dark", "use",
+                                     "yeast", "caret", "bevy", "rooms", "pink", "yeti", "end", "rim", "seal", "fungi", "clang", "bars", "evil", "hash",
+                                     "state", "rumor", "glad", "full", "shrub", "stalk", "glue", "skid", "depot", "weird", "waste", "loft", "stops", 
+                                     "buoy", "pint", "cup", "pimp", "goo", "role", "wall", "wish", "chomp", "wart", "cavil", "jetty", "burns", "noise",
+                                     "image", "index", "conch", "beet", "duel", "jack", "fade", "broth", "belly", "pound", "fern"};
     private final Scanner scan;
 
     //Default
@@ -46,7 +61,7 @@ public class Hangman {
                     if(guessed.contains(guess)){
                         System.out.println("Already guessed " + guess);
                         flag = true;
-                        break; // <----------
+                        break; // <---------- CWE-484
                     }
             guessed.add(guess);
             if(secret.contains(String.valueOf(guess))){
@@ -85,10 +100,10 @@ public static char getValidGuess(){
     while(true){
         System.out.print("Guess a letter: ");
         String input = scan.nextLine().toLowerCase();
-        if(input.length() == 1 && input.matches("[a-z]")){ //CWE-184 - incomplete list of disallowed inputs (avoiding blacklists and using whitelists instead) 
+        if(input.length() == 1 && input.matches("[a-z]")){// <-------- CWE-184 - incomplete list of disallowed inputs (avoiding blacklists and using whitelists instead) 
             return input.charAt(0);
         }
-        System.out.println("Please enter a single letter from a-z.");
+        System.out.println("Please enter a single letter from a-z."); // <------ WHITELIST instead of BLACKLIST
     }
 }
 // CWE-494 sort of not really.. assume that some sort of function is downloaded 
