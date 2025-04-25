@@ -7,10 +7,16 @@ import java.util.*;
 public class Hangman {
     public static final int MAX_WRONG = 6;
     public static final int EXPECTED_WORD_COUNT = 3;
-    public static String[] words = {"closed", "water", "bottle"};
-    public static Scanner scan = new Scanner(System.in);
+    private static String[] words = {"closed", "water", "bottle"};
+    private final Scanner scan;
 
-    public static void main(String[]args){
+    //Default
+    public Hangman(){
+        this.scan = new Scanner(System.in);
+    }
+
+    //Game loop
+    public void play(){
         // CWE-494** (see verifyWordListIntegrity function desc)
         if(!verifyWordListIntegrity(words)){
             System.out.println("Word list integrity check failed!");
@@ -50,9 +56,7 @@ public class Hangman {
                 }
                 if(!flag) {
                 	System.out.println("Correct!");
-                	
                 }
-                
             }
             else{
             	if(!(correct.contains(guess) && (guessed.contains(guess)))) {
@@ -71,8 +75,6 @@ public class Hangman {
         	printHangman(MAX_WRONG);
             System.out.println("You lose! The word was: " + secret);
         }
-
-        scan.close();
     }
 
 
@@ -92,10 +94,7 @@ public static char getValidGuess(){
 // verified, or that function was bundled with other untrusted code that
 // wasn't verified
 public static boolean verifyWordListIntegrity(String[] words){
-    return words.length == EXPECTED_WORD_COUNT && 
-            Arrays.asList(words).contains("closed") &&
-            Arrays.asList(words).contains("water") &&
-            Arrays.asList(words).contains("bottle");
+    return words.length == EXPECTED_WORD_COUNT;
 }
 
 public static void print(char[] display, Set<Character> guessed, int wrong){
