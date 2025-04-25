@@ -2,14 +2,17 @@ import Games.mathGame;
 import Games.GuessNumber;
 import Games.inputHandler;
 import Games.Hangman;
+import Games.Cube;
 
 public class main {
     public static void main(String[] args) {
         inputHandler i = new inputHandler();
         System.out.println("Welcome to a Game Collection!");
         int choice = i.in(
-                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
+                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Cube Animation4\n5. Choice 5\n 6. Exit\nChoice:");
         while (choice != 6) {
+
+            // switch case avoids CWE-484: Omitted Break Statement in Switch by including a break in every case
             switch (choice) {
                 case 1:
                     mathGame math = new mathGame();
@@ -23,7 +26,8 @@ public class main {
                     GuessNumber guessNumber = new GuessNumber();
                     break;
                 case 4:
-
+                    Cube cube = new Cube();
+                    cube.run();
                     break;
                 case 5:
 
