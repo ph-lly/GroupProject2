@@ -1,3 +1,5 @@
+package Games;
+
 import java.util.*;
 /*
  * Hangman Program for Group Project 2
