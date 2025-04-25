@@ -6,7 +6,7 @@ public class main {
         inputHandler i = new inputHandler();
         System.out.println("Welcome to a Game Collection!");
         int choice = i.in(
-                "\nWhich game would you like to play:\n1. Math Game\n2. Choice 2\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
+                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
         while (choice != 6) {
             switch (choice) {
                 case 1:
@@ -14,7 +14,8 @@ public class main {
                     math.play();
                     break;
                 case 2:
-
+                    Hangman hangman = new Hangman();
+                    hangman.play();
                     break;
                 case 3:
 
@@ -30,7 +31,7 @@ public class main {
                     break;
             }
             choice = i.in(
-                    "Which game would you like to play next:\n1. Math Game\n2. Choice 2\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
+                    "Which game would you like to play next:\n1. Math Game\n2. Hangman\n3. Choice 3\n4. Choice 4\n5. Choice 5\n 6. Exit\nChoice:");
         }
     }
 }
