@@ -3,7 +3,7 @@ import Games.GuessNumber;
 import Games.inputHandler;
 import Games.Hangman;
 import Games.Cube;
-import Games.WordGuesser
+import Games.WordGuesser;
 
 public class main {
     public static void main(String[] args) {
