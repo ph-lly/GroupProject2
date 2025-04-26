@@ -28,11 +28,11 @@ public class Hangman {
                                      "state", "rumor", "glad", "full", "shrub", "stalk", "glue", "skid", "depot", "weird", "waste", "loft", "stops", 
                                      "buoy", "pint", "cup", "pimp", "goo", "role", "wall", "wish", "chomp", "wart", "cavil", "jetty", "burns", "noise",
                                      "image", "index", "conch", "beet", "duel", "jack", "fade", "broth", "belly", "pound", "fern"};
-    private final Scanner scan;
+    private static final Scanner scan = new Scanner(System.in);
 
     //Default constructor
     public Hangman(){
-        this.scan = new Scanner(System.in);
+        
     }
 
     //Game loop
