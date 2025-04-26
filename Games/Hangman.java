@@ -6,6 +6,9 @@ import java.util.*;
  * Author: Phillip Nguyen
  */
 
+/*
+Hangman class
+*/
 public class Hangman {
     public static final int MAX_WRONG = 6;
     public static final int EXPECTED_WORD_COUNT = 197;
@@ -27,7 +30,7 @@ public class Hangman {
                                      "image", "index", "conch", "beet", "duel", "jack", "fade", "broth", "belly", "pound", "fern"};
     private final Scanner scan;
 
-    //Default
+    //Default constructor
     public Hangman(){
         this.scan = new Scanner(System.in);
     }
@@ -96,6 +99,10 @@ public class Hangman {
 
 
 // CWE-606 input validation for loop
+/*
+getValidGuess
+@return - char
+*/
 public static char getValidGuess(){
     while(true){
         System.out.print("Guess a letter: ");
@@ -106,14 +113,26 @@ public static char getValidGuess(){
         System.out.println("Please enter a single letter from a-z."); // <------ WHITELIST instead of BLACKLIST
     }
 }
-// CWE-494 sort of not really.. assume that some sort of function is downloaded 
-// from a library that generated a word from a server that isn't directly
-// verified, or that function was bundled with other untrusted code that
-// wasn't verified
+/*
+verifyWordListIntegrity that verifies the word list
+CWE-494 sort of not really.. assume that some sort of function is downloaded 
+from a library that generated a word from a server that isn't directly
+verified, or that function was bundled with other untrusted code that
+wasn't verified
+@param - String[]
+@return - boolean
+*/
 public static boolean verifyWordListIntegrity(String[] words){
     return words.length == EXPECTED_WORD_COUNT;
 }
 
+//prints out every round
+/*
+print function
+@param - char[]
+@param - Set<Character>
+@param - int
+*/
 public static void print(char[] display, Set<Character> guessed, int wrong){
     System.out.println("\nWord: " + String.valueOf(display));
     System.out.println("Guessed letters: " + guessed);
@@ -121,6 +140,9 @@ public static void print(char[] display, Set<Character> guessed, int wrong){
     printHangman(wrong);
 }
 
+/*hangman print helper function
+@param - int
+*/
 public static void printHangman(int wrong) {
     String[] hangman = new String[] {
     		
@@ -182,7 +204,7 @@ public static void printHangman(int wrong) {
             "  +---+\n" +
             "  |   |\n" +
             "  O   |\n" +
-            " /|\\  |\n" +
+            " /|\\  |\n" + 
             " / \\  |\n" +
             "~~ ~ ~ |\n" +
             "========="
