@@ -1,5 +1,6 @@
 //Game for group project 2
 //Author Delaney Vandegraft
+package Games;
 
 import java.security.SecureRandom;
 import java.util.*;
