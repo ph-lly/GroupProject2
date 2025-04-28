@@ -32,7 +32,7 @@ public class main {
                     break;
                 case 5:
                     WordGuesser WGG = new WordGuesser();
-                    WGG.start();
+                    WGG.run();
                     break;
                 default:
                     System.out.println("Out of bounds. Choose again.\n");
