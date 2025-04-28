@@ -5,7 +5,7 @@ package Games;
 import java.security.SecureRandom;
 import java.util.*;
 
-public class WordGuessingGame{
+public class WordGuesser{
      //CWE-331, fixed entopy issues
     private static final SecureRandom rng = new SecureRandom();
 
@@ -16,7 +16,7 @@ public class WordGuessingGame{
     private int totalScore = 0; //Score tracker
     private boolean gameOver = false; //Game status tracker
 
-    public void start() { //game runner
+    public void run() { //game runner
         System.out.println("Welcome to the word guessing game!");
         addCustomWords(); 
         loadDefualtWord();
@@ -58,7 +58,7 @@ public class WordGuessingGame{
     }
 
     private void loadDefualtWord() { //defualt words
-        wordList.add(new WordEntry("wizard", new String[]{"magic user", "Has a beard", "Wears a robe"}))
+        wordList.add(new WordEntry("wizard", new String[]{"magic user", "Has a beard", "Wears a robe"}));
         wordList.add(new WordEntry("dragon", new String[]{"Breathes fire", "Has wings", "Hoards gold"}));
         wordList.add(new WordEntry("castle", new String[]{"Medieval building", "Has towers", "Protected by walls"}));
         wordList.add(new WordEntry("potion", new String[]{"Comes in bottles", "Used in magic", "Can heal or harm"}));
@@ -85,7 +85,7 @@ public class WordGuessingGame{
         boolean guessedCorrectly = false;
 
         for(int i=0; i<3; i++){
-            System.out.println("\nHint " + (1+i) + " : " + hints[i]);
+            System.out.println("\nHint " + (1+i) + " : " + wordEntry.hints[i]);
             System.out.println("Word so far: " + String.valueOf(revealed));
             System.out.print("Your guess: ");
             String guess = scanner.nextLine().trim();
@@ -96,20 +96,21 @@ public class WordGuessingGame{
                 return;
             }
 
-            if (word.equalsIgnoreCase(guess)) {
-                guessedCorrectly = true;
-
+            if (wordEntry.word.equalsIgnoreCase(guess)) {
                 int remainingLetters = wordEntry.word.length() - revealedIndices.size();
                 int remainingHints = 3 - (i+1);
                 totalScore += remainingLetters * 5 + remainingHints * 10;
                 System.out.println("Correct!  Total Points: " + totalScore);
+                return;
             }else{
                 revealRandomLetter(wordEntry.word, revealed, revealedIndices);
             }
 
-            if(!guessedCorrectly){
+            if(!guessedCorrectly && i==2){
                 System.out.println("Out of hints! The word was: " + wordEntry.word);
                 gameOver = true;
+            }else if(!guessedCorrectly){
+                System.out.println("Wrong, try again!");
             }
         }
     }
@@ -137,7 +138,7 @@ class WordEntry{
     public String word;
     public final String[] hints;
 
-    public WordEntry(string word, String[] hints){
+    public WordEntry(String word, String[] hints){
         this.word = word;
         this.hints = hints;
     }
