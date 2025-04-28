@@ -10,7 +10,7 @@ public class main {
         inputHandler i = new inputHandler();
         System.out.println("Welcome to a Game Collection!");
         int choice = i.in(
-                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Cube Animation4\n5. Word Guesser 5\n 6. Exit\nChoice:");
+                "\nWhich game would you like to play:\n1. Math Game\n2. Hangman\n3. Number Guess\n4. Cube Animation4\n5. Word Guesser \n 6. Exit\nChoice:");
         while (choice != 6) {
 
             // switch case avoids CWE-484: Omitted Break Statement in Switch by including a break in every case
@@ -31,8 +31,8 @@ public class main {
                     cube.run();
                     break;
                 case 5:
-                    WordGuessingGame WGG = new WordGuessingGame();
-                    WGG.run();
+                    WordGuesser WGG = new WordGuesser();
+                    WGG.start();
                     break;
                 default:
                     System.out.println("Out of bounds. Choose again.\n");
