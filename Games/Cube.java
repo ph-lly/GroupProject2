@@ -1,7 +1,7 @@
 package Games;
 
 public class Cube {
-    public static float r = 7.0f;
+    public static float r = 5.0f;
 
     public static float A, B, C;
 
@@ -52,23 +52,31 @@ public class Cube {
     }
 
     public static float rotateX(float [] v){ //avoids CWE-783: Operator Precedence Logic Error for proper rotation equation
-        return (float)(v[1] * Math.sin(A) * Math.sin(B) * Math.cos(C) - v[2] * Math.cos(A) * Math.sin(B) * Math.cos(C) +
-         v[1] * Math.cos(A) * Math.sin(C) + v[2] * Math.sin(A) * Math.sin(C) + v[0] * Math.cos(B) * Math.cos(C));
+        return (float)(
+            (v[1] * Math.sin(A) * Math.sin(B) * Math.cos(C)) -
+            (v[2] * Math.cos(A) * Math.sin(B) * Math.cos(C)) +
+            (v[1] * Math.cos(A) * Math.sin(C)) +
+            (v[2] * Math.sin(A) * Math.sin(C)) +
+            (v[0] * Math.cos(B) * Math.cos(C))
+        );
     }
 
     public static float rotateY(float [] v) { //avoids CWE-783: Operator Precedence Logic Error for proper rotation equation
-        return (float)(v[1] * Math.cos(A) * Math.cos(C) + v[2] * Math.sin(A) * Math.cos(C) -
-               v[1] * Math.sin(A) * Math.sin(B) * Math.sin(C) + v[2] * Math.cos(A) * Math.sin(B) * Math.sin(C) -
-               v[0] * Math.cos(B) * Math.sin(C));
+        return (float)(
+        (v[1] * Math.cos(A) * Math.cos(C)) +
+        (v[2] * Math.sin(A) * Math.cos(C)) -
+        (v[1] * Math.sin(A) * Math.sin(B) * Math.sin(C)) +
+        (v[2] * Math.cos(A) * Math.sin(B) * Math.sin(C)) -
+        (v[0] * Math.cos(B) * Math.sin(C))
+    );
     }
 
     public static float rotateZ(float [] v) { //avoids CWE-783: Operator Precedence Logic Error for proper rotation equation
-        return (float)(v[2] * Math.cos(A) * Math.cos(B) - v[1] * Math.sin(A) * Math.cos(B) + v[0] * Math.sin(B));
-    }
-
-    public static void fill(int [] coord1, int [] coord2, int [] coord3, int [] coord4){
-
-    }
+        return (float)(
+            (v[2] * Math.cos(A) * Math.cos(B)) -
+            (v[1] * Math.sin(A) * Math.cos(B)) +
+            (v[0] * Math.sin(B))
+        );    }
 
     public static void drawVector(int x0, int y0, int x1, int y1){
         if (Math.abs(y1 - y0) < Math.abs(x1 - x0))
@@ -141,4 +149,5 @@ public class Cube {
         }
         return builder.toString();
     }
+
 }
