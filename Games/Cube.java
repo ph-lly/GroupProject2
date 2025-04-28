@@ -12,14 +12,13 @@ public class Cube {
     public static int y = height/2;
 
     public static char [][] buffer;
-    public static char [] faces = {'@', '#', '$', '%', '&', '*'};
 
     public float [][] cubeVerticies = new float [][] {
             {-r, -r, -r}, {-r, -r, r}, {-r, r, -r}, {-r, r, r},
             {r, -r, -r}, {r, -r, r}, {r, r, -r}, {r, r, r}
         };
 
-    int[][] cubeEdges = {
+    public int[][] cubeEdges = new int[][] {
             {0, 1}, {1, 3}, {3, 2}, {2, 0},
             {4, 5}, {5, 7}, {7, 6}, {6, 4},
             {0, 4}, {1, 5}, {2, 6}, {3, 7}
@@ -29,7 +28,7 @@ public class Cube {
     public Cube() { }
 
     public void run() {
-        //avoids CWE-835: Loop with Unreachable Exit Condition (‘Infinite Loop’) her by using a for loop
+        //avoids CWE-835: Loop with Unreachable Exit Condition (‘Infinite Loop’) here by using a for loop
         for (int i = 0; i < 5000; i++) {
             buffer = new char [width][height];
             A += 0.005f;
@@ -92,13 +91,13 @@ public class Cube {
             yi = -1;
             dy = -dy;
         }
-        int D = (2 * dy) - dx;
+        int D = (2 * dy) - dx;//operator precedence
         int y = y0;
         for (int x = x0; x < x1; x++){
             buffer[x][y] = '-';
             if (D > 0) {
                 y = y + yi;
-                D = D + (2 * (dy - dx));
+                D = D + (2 * (dy - dx));//operator precedence
             }
             else
                 D = D + 2*dy;
@@ -113,14 +112,14 @@ public class Cube {
             xi = -1;
             dx = -dx;
         }
-        int D = (2 * dx) - dy;
+        int D = (2 * dx) - dy;//operator precedence
         int x = x0;
 
         for (int y = y0; y < y1; y++){
             buffer[x][y] = '|';
             if (D > 0) {
                 x = x + xi;
-                D = D + (2 * (dx - dy));
+                D = D + (2 * (dx - dy));//operator precedence
             }  
             else
                 D = D + 2*dx;
