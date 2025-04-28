@@ -58,13 +58,17 @@ public class GuessNumber {
                 }
             }
 
+            // CWE-480: Using '==' for comparison (not '=' assignment)
             if (guess == number) {
                 System.out.println("Correct! +1 point");
                 score++;
             } else {
+                 // CWE-134: format string is controlled by the developer
+                // We're not using any user input directly in the format string
                 System.out.printf("Wrong! The number was %d\n", number);
             }
 
+            // CWE-134: Again, we use a fixed format string with placeholder
             System.out.printf("Current score: %d/%d\n\n", score, round);
         }
 
